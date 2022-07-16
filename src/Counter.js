@@ -25,9 +25,9 @@ export default class Counter extends Component {
         this.setState(prevState => {
             return {count: prevState.count + amount}
         })
-        this.setState(prevState => {
-            return {count: prevState.count + amount}
-        })
+        // this.setState(prevState => {
+        //     return {count: prevState.count + amount}
+        // })
         // {count: this.state.count + amount}) //async
     }
 }
