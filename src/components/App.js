@@ -1,11 +1,20 @@
-import React from 'react'
+
+import React, { useState } from 'react'
 import RecipeList from './RecipeList'
 import '../css/app.css'
 
 function App() {
+  const [recipies, setRecipes] = useState(sampleRecipes)
+
   return (
-    <RecipeList recipies={sampleRecipes}/>
+    <RecipeList recipies={recipies}/>
   )
+}
+
+function handleRecipeAdd(){
+  const newRecipe = {
+    // id: Date.now().toString()
+  }
 }
 
 const sampleRecipes = [
