@@ -4,12 +4,19 @@ import RecipeList from './RecipeList'
 import '../css/app.css'
 import {v4 as uuid} from 'uuid'
 
+export const RecipeContext = React.createContext()
+
+
 function App() {
   const [recipies, setRecipes] = useState(sampleRecipes)
 
+  const recipeContextValue = {
+    handleRecipeAdd,
+    handleRecipeDelete
+  }
+
   function handleRecipeAdd(){
     const newRecipe = {
-      // id: Date.now().toString()
       id: uuid(),
       name: 'New',
       serving: 1,
@@ -19,6 +26,7 @@ function App() {
         {id: uuid(), name: 'Name', amounts: '1 Tbs'}
       ]
     }
+
     setRecipes([...recipies, newRecipe])
   }
 
@@ -27,11 +35,11 @@ function App() {
   }
 
   return (
-    <RecipeList 
-      recipies={recipies}
-      handleRecipeAdd={handleRecipeAdd}
-      handleRecipeDelete={handleRecipeDelete}
-    />
+    <RecipeContext.Provider value={recipeContextValue}>
+      <RecipeList 
+        recipies={recipies}
+      />
+    </RecipeContext.Provider>
   )
 }
 
