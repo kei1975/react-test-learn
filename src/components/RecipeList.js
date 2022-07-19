@@ -1,7 +1,13 @@
 import React from 'react'
 import Recipe from './Recipe'
 
-export default function RecipeList({recipies, handleRecipeAdd}) {
+export default function RecipeList(props) {
+  const {
+    recipies, 
+    handleRecipeAdd,
+    handleRecipeDelete
+  } = props
+
   return (
     <div className="recipe-list">
         <div>
@@ -10,6 +16,7 @@ export default function RecipeList({recipies, handleRecipeAdd}) {
                 <Recipe 
                     key={recipe.id} 
                     {...recipe} 
+                    handleRecipeDelete={handleRecipeDelete}
                 />
                 )
             })}
