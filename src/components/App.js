@@ -9,15 +9,16 @@ const LOCAL_STORAGE_KEY = 'cookingWithReact.recipies'
 
 function App() {
   const [recipies, setRecipes] = useState(sampleRecipes)
-  
-  useEffect(() => {
+  console.log('localStorage.getItem')
+
+ useEffect(() => {
     const recipeJSON = localStorage.getItem(LOCAL_STORAGE_KEY)
-    // console.log(recipeJSON)
-    if(recipeJSON != null) setRecipes(JSON.parse(recipeJSON))
+    console.log(recipeJSON);
+    if (recipeJSON != null) setRecipes(JSON.parse(recipeJSON))
   }, []) //empty array is called just once  
 
   useEffect(() => {
-    // console.log('Rendered')
+    console.log('Rendered')
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(recipies))
   }, [recipies])//everytime recipies is changed useEffect is called
 
