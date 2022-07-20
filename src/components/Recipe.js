@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext } from 'react'
 import IngredientList from './IngredientList'
 import { RecipeContext } from './App'
 
@@ -12,6 +12,14 @@ export default function Recipe(props) {
         instructions,
         ingredients,
     } = props
+
+// useEffect(() => {
+//     console.log("Render")
+//     return () => {
+//         console.log("UnMount")
+//     }
+// }, [])
+
   return (
     <div className="recipe">
         <div className="recipe__header">
