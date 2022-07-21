@@ -33,13 +33,6 @@ function App() {
     handleRecipeChange
   }
 
-  function handleRecipeChange(id, recipe) {
-    const newRecipes = [...recipies]
-    const index = newRecipes.findIndex(r => r.id === id)
-    newRecipes[index] = recipe
-    setRecipes(newRecipes)
-  }
-
   function handleRecipeSelect(id){
     setSelectedRecipeId(id)
   }
@@ -58,6 +51,13 @@ function App() {
 
     setRecipes([...recipies, newRecipe])
   }
+  function handleRecipeChange(id, recipe) {
+    const newRecipes = [...recipies]
+    const index = newRecipes.findIndex(r => r.id === id)
+    newRecipes[index] = recipe
+    setRecipes(newRecipes)
+  }
+
 
   function handleRecipeDelete(id) {
     setRecipes(recipies.filter(recipe => recipe.id !== id))
