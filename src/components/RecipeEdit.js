@@ -10,6 +10,13 @@ export default function RecipeEdit({ recipe }) {
         handleRecipeChange(recipe.id, { ...recipe, ...changes })
     }
 
+    function handleIngredientChange(id, ingredient ){
+        const newIngredients = [...recipe.ingredients]
+        const index = newIngredients.findIndex(i => i.id === id)
+        newIngredients[index] = ingredient
+        handleChange({ ingredients: newIngredients })
+    }
+
     return (
         <div className="recipe-edit">
             <div className="recipe-edit__remove-button-container">
@@ -47,7 +54,7 @@ export default function RecipeEdit({ recipe }) {
                 name="servings" 
                 id="servings"
                 value={recipe.servings}
-                onInput={e => handleChange({ servings: e.target.value })}
+                onInput={e => handleChange({ servings: parseInt(e.target.value) || '' })}
                 className="recipe-edit__input" />
 
                 <label htmlFor="instructions"  className="recipe-edit__label">
@@ -56,9 +63,9 @@ export default function RecipeEdit({ recipe }) {
                 <textarea 
                 name="instructions" 
                 id="instructions"
-                className="recipe-edit__input">
-                {recipe.instructions}
-                </textarea>
+                onInput={e => handleChange({ instructions: e.target.value })}
+                value={recipe.instructions}
+                className="recipe-edit__input" />
             </div>
             <br />
             <label className='recipe-edit__label'>Ingredients</label>
@@ -68,6 +75,7 @@ export default function RecipeEdit({ recipe }) {
                 {recipe.ingredients.map(ingredient => (
                     <RecipeIngredientEdit 
                     key={ingredient.id} 
+                    handleIngredientChange = {handleIngredientChange}
                     ingredient={ingredient}
                     />
                 ))}
