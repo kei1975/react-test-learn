@@ -40,15 +40,16 @@ function App() {
   function handleRecipeAdd(){
     const newRecipe = {
       id: uuid(),
-      name: 'New',
+      name: '',
       servings: 1,
-      cookTime: '1:00',
-      instructions: 'Instr',
+      cookTime: '',
+      instructions: '',
       ingredients: [
-        {id: uuid(), name: 'Name', amounts: '1 Tbs'}
+        {id: uuid(), name: '', amounts: ''}
       ]
     }
 
+    setSelectedRecipeId(newRecipe.id)
     setRecipes([...recipies, newRecipe])
   }
   function handleRecipeChange(id, recipe) {
